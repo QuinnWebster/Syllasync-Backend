@@ -14,7 +14,7 @@ async function getAiText(pdfText) {
       model: "gpt-4o-mini",
       messages: [
         { role: "system", content: systemPrompt },
-        { role: "user", content: "Tell me a joke" },
+        { role: "user", content: pdfText },
       ],
       //   response_format: zodResponseFormat(calendarArray, "calendarArray"),
       max_tokens: 900,
