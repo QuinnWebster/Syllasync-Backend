@@ -1,10 +1,52 @@
 const express = require("express");
+const OpenAI = require("openai");
+
+dotenv.config(); // Load .env file
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Basic GET route
+// OpenAI client setup
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
+// System prompt for OpenAI
+const systemPrompt = "You are a comedian bot that tells a single, funny joke.";
+
+// Function to get a joke from OpenAI
+async function getJoke() {
+  try {
+    const completion = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: "Tell me a joke." },
+      ],
+      max_tokens: 50,
+    });
+
+    const jokeResponse = completion.choices[0].message.content.trim();
+    return jokeResponse;
+  } catch (error) {
+    console.error("Error fetching joke:", error);
+    throw new Error("Failed to fetch a joke.");
+  }
+}
+
+// API endpoint to get a joke
+app.get("/joke", async (req, res) => {
+  try {
+    const joke = await getJoke();
+    res.json({ joke });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Basic route
 app.get("/", (req, res) => {
-  res.send("Hello, world!");
+  res.send("Hello, dude! Try /joke for a laugh.");
 });
 
 // Start the server
