@@ -1,31 +1,11 @@
 const OpenAI = require("openai");
-// import systemPrompt from "./systemPrompt.js";
+const systemPrompt = require("./systemPrompt.js");
 // import z from "zods";
 // import { zodResponseFormat } from "openai/helpers/zod";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
-
-// const calendarObject = z.object({
-//   summary: z.string(),
-//   location: z.string(),
-//   description: z.string(),
-//   start: z.object({
-//     dateTime: z.string(),
-//     timeZone: z.string(),
-//   }),
-//   end: z.object({
-//     dateTime: z.string(),
-//     timeZone: z.string(),
-//   }),
-//   colorId: z.string(),
-// });
-
-// const calendarArray = z.object({
-//   objects: z.array(calendarObject),
-//   additionalNotes: z.string(),
-// });
 
 // Function to get AI-generated text based on the system prompt and syllabus
 async function getAiText(pdfText) {
@@ -34,14 +14,13 @@ async function getAiText(pdfText) {
       model: "gpt-4o-mini",
       messages: [
         { role: "system", content: systemPrompt },
-        { role: "user", content: pdfText },
+        { role: "user", content: "Tell me a joke" },
       ],
       //   response_format: zodResponseFormat(calendarArray, "calendarArray"),
       max_tokens: 900,
     });
 
-    const aiText = JSON.parse(completion.choices[0].message.content); // Get the generated AI text
-    console.log("Type", typeof aiText);
+    const aiText = completion.choices[0].message.content; // Get the generated AI text
 
     return aiText; // Return the generated text
   } catch (error) {

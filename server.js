@@ -1,14 +1,10 @@
 const getAiText = require("./ai.js");
 
 const express = require("express");
-const OpenAI = require("openai");
+// const OpenAI = require("openai");
 
 const app = express();
 const PORT = 3000;
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
 
 const systemPrompt = "You are a comedian bot that tells a single, funny joke.";
 
