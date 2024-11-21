@@ -37,8 +37,6 @@ const systemPrompt = "You are a comedian bot that tells a single, funny joke.";
 // });
 
 app.post("/aiResponse", async (req, res) => {
-  res.json({ joke: "joke" });
-
   try {
     const pdfText = req.body.text;
     if (!pdfText) {
