@@ -33,4 +33,4 @@ Review the following structure
 Also, briefly include any notes that you have about the syllabus
 `;
 
-export default systemPrompt;
+module.exports = systemPrompt;
