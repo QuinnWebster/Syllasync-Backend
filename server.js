@@ -1,10 +1,8 @@
 const express = require("express");
 const OpenAI = require("openai");
 
-dotenv.config(); // Load .env file
-
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 // OpenAI client setup
 const openai = new OpenAI({
