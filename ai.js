@@ -9,7 +9,7 @@ const openai = new OpenAI({
 
 // Function to get AI-generated text based on the system prompt and syllabus
 async function getAiText(pdfText) {
-  console.log("pdfText", pdfText);
+  return "HELLOO"
   try {
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",
