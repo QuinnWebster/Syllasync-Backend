@@ -1,7 +1,7 @@
 const OpenAI = require("openai");
 const systemPrompt = require("./systemPrompt.js");
-import z from "zod";
-import { zodResponseFormat } from "openai/helpers/zod";
+const z = require("zod");
+const { zodResponseFormat } = require("openai/helpers/zod");
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
