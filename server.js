@@ -1,7 +1,16 @@
 const getAiText = require("./ai.js");
+const cors = require("cors");
 
 const express = require("express");
 // const OpenAI = require("openai");
+
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Allow requests only from your local frontend
+    methods: ["GET", "POST"], // Allow only specific HTTP methods
+    allowedHeaders: ["Content-Type"], // Allow specific headers
+  })
+);
 
 const app = express();
 const PORT = 3000;
