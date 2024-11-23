@@ -1,10 +1,30 @@
 const OpenAI = require("openai");
 const systemPrompt = require("./systemPrompt.js");
-// import z from "zods";
-// import { zodResponseFormat } from "openai/helpers/zod";
+import z from "zods";
+import { zodResponseFormat } from "openai/helpers/zod";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
+});
+
+const calendarObject = z.object({
+  summary: z.string(),
+  location: z.string(),
+  description: z.string(),
+  start: z.object({
+    dateTime: z.string(),
+    timeZone: z.string(),
+  }),
+  end: z.object({
+    dateTime: z.string(),
+    timeZone: z.string(),
+  }),
+  colorId: z.string(),
+});
+
+const calendarArray = z.object({
+  objects: z.array(calendarObject),
+  // additionalNotes: z.string(),
 });
 
 // Function to get AI-generated text based on the system prompt and syllabus
@@ -16,7 +36,7 @@ async function getAiText(pdfText) {
         { role: "system", content: systemPrompt },
         { role: "user", content: pdfText },
       ],
-      //   response_format: zodResponseFormat(calendarArray, "calendarArray"),
+      response_format: zodResponseFormat(calendarArray, "calendarArray"),
       max_tokens: 900,
     });
 
