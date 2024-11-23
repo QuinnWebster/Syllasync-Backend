@@ -4,6 +4,8 @@ const cors = require("cors");
 const express = require("express");
 // const OpenAI = require("openai");
 
+const app = express();
+
 app.use(
   cors({
     origin: "http://localhost:5173", // Allow requests only from your local frontend
@@ -12,7 +14,6 @@ app.use(
   })
 );
 
-const app = express();
 const PORT = 3000;
 
 app.use(express.json());
