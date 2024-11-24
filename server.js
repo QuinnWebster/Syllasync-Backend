@@ -8,7 +8,8 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173", // Allow requests only from your local frontend
+    // origin: "http://localhost:5173", // Allow requests only from your local frontend
+    origin: "https://syllasync-frontend.onrender.com",
     methods: ["GET", "POST"], // Allow only specific HTTP methods
     allowedHeaders: ["Content-Type"], // Allow specific headers
   })
