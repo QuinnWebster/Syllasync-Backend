@@ -61,7 +61,7 @@ const generateCombinedICS = (events) => {
 app.post("/send-events", async (req, res) => {
   console.log("Quinn...");
 
-  sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
   const { events, recipientEmail } = req.body;
 
