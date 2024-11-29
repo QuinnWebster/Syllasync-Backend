@@ -11,7 +11,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 app.use(
   cors({
-    origin: "*",
+    origin: "http://localhost:5173",
 
     methods: ["GET", "POST"], // Allow only specific HTTP methods
     allowedHeaders: ["Content-Type"], // Allow specific headers
