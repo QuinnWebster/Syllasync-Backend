@@ -34,6 +34,7 @@ app.post("/aiResponse", async (req, res) => {
 });
 
 app.post("/send-events", async (req, res) => {
+  console.log("Sending events...");
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
   const { events, recipientEmail } = req.body;

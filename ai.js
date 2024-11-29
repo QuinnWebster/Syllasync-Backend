@@ -29,6 +29,7 @@ const calendarArray = z.object({
 
 // Function to get AI-generated text based on the system prompt and syllabus
 async function getAiText(pdfText) {
+  console.log("Generating AI text..."); // Log that we're generating AI text
   try {
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",
