@@ -32,47 +32,44 @@ app.post("/aiResponse", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-
 const generateCombinedICS = (events) => {
   const formatDate = (date) => {
     return date.toISOString().replace(/[-:]/g, "").split(".")[0];
   };
 
-  let icsContent = `BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//YourCompany//NONSGML v1.0//EN`;
+  let icsContent = `BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//YourCompany//NONSGML v1.0//EN`;
 
   events.forEach((event, index) => {
     const { subject, start, end, description } = event;
     const startDate = new Date(start);
     const endDate = new Date(end);
 
-    icsContent += `
-        BEGIN:VEVENT
-        UID:${new Date().getTime()}-${index}@yourdomain.com
-        DTSTAMP:${formatDate(new Date())}
-        DTSTART:${formatDate(startDate)}
-        DTEND:${formatDate(endDate)}
-        SUMMARY:${subject}
-        DESCRIPTION:${description}
-        LOCATION:Online
-        END:VEVENT`;
+    icsContent += `\r\nBEGIN:VEVENT\r\nUID:${new Date().getTime()}-${index}@yourdomain.com\r\nDTSTAMP:${formatDate(
+      new Date()
+    )}\r\nDTSTART:${formatDate(startDate)}\r\nDTEND:${formatDate(
+      endDate
+    )}\r\nSUMMARY:${subject}\r\nDESCRIPTION:${
+      description || ""
+    }\r\nLOCATION:Online\r\nEND:VEVENT`;
   });
 
-  icsContent += `\nEND:VCALENDAR`;
+  icsContent += `\r\nEND:VCALENDAR`;
 
   return icsContent;
 };
 
 app.post("/send-events", async (req, res) => {
-  console.log("Sending events...");
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  console.log("Quinn...");
+
+  sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
   const { events, recipientEmail } = req.body;
 
   try {
+    // Generate the ICS content
     const icsContent = generateCombinedICS(events);
 
+    // Configure email message
     const msg = {
       to: recipientEmail,
       from: "quinnwebster@uvic.ca",
@@ -88,6 +85,7 @@ app.post("/send-events", async (req, res) => {
       ],
     };
 
+    // Send the email
     await sgMail.send(msg);
 
     res.status(200).json({ message: "Events sent successfully!" });
@@ -96,6 +94,7 @@ app.post("/send-events", async (req, res) => {
     res.status(500).json({ error: "Failed to send events" });
   }
 });
+
 // app.get("/", (req, res) => {
 //   res.send("Hello, dude! Try /joke for a laugh.");
 // });
