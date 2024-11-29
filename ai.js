@@ -3,8 +3,12 @@ const systemPrompt = require("./systemPrompt.js");
 const z = require("zod");
 const { zodResponseFormat } = require("openai/helpers/zod");
 
+// const openai = new OpenAI({
+//   apiKey: process.env.OPENAI_API_KEY,
+// });
+
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: "dkfs",
 });
 
 const calendarObject = z.object({
