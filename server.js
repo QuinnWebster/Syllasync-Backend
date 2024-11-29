@@ -33,6 +33,37 @@ app.post("/aiResponse", async (req, res) => {
   }
 });
 
+const generateCombinedICS = (events) => {
+  const formatDate = (date) => {
+    return date.toISOString().replace(/[-:]/g, "").split(".")[0];
+  };
+
+  let icsContent = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//YourCompany//NONSGML v1.0//EN`;
+
+  events.forEach((event, index) => {
+    const { subject, start, end, description } = event;
+    const startDate = new Date(start);
+    const endDate = new Date(end);
+
+    icsContent += `
+        BEGIN:VEVENT
+        UID:${new Date().getTime()}-${index}@yourdomain.com
+        DTSTAMP:${formatDate(new Date())}
+        DTSTART:${formatDate(startDate)}
+        DTEND:${formatDate(endDate)}
+        SUMMARY:${subject}
+        DESCRIPTION:${description}
+        LOCATION:Online
+        END:VEVENT`;
+  });
+
+  icsContent += `\nEND:VCALENDAR`;
+
+  return icsContent;
+};
+
 app.post("/send-events", async (req, res) => {
   console.log("Sending events...");
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
