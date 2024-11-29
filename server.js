@@ -7,8 +7,6 @@ const express = require("express");
 
 const app = express();
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
 app.use(
   cors({
     origin: "http://localhost:5173",
@@ -36,6 +34,8 @@ app.post("/aiResponse", async (req, res) => {
 });
 
 app.post("/send-events", async (req, res) => {
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
   const { events, recipientEmail } = req.body;
 
   try {
