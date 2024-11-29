@@ -8,18 +8,10 @@ const openai = new OpenAI({
 });
 
 const calendarObject = z.object({
-  summary: z.string(),
-  location: z.string(),
+  subject: z.string(),
+  start: z.string(),
+  end: z.string(),
   description: z.string(),
-  start: z.object({
-    dateTime: z.string(),
-    timeZone: z.string(),
-  }),
-  end: z.object({
-    dateTime: z.string(),
-    timeZone: z.string(),
-  }),
-  colorId: z.string(),
 });
 
 const calendarArray = z.object({
