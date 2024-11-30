@@ -8,6 +8,7 @@ const openai = new OpenAI({
 });
 
 const calendarObject = z.object({
+  summary: z.string(),
   subject: z.string(),
   start: z.string(),
   end: z.string(),
@@ -16,7 +17,6 @@ const calendarObject = z.object({
 
 const calendarArray = z.object({
   objects: z.array(calendarObject),
-  // additionalNotes: z.string(),
 });
 
 // Function to get AI-generated text based on the system prompt and syllabus
