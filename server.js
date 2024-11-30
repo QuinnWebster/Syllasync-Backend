@@ -34,8 +34,6 @@ app.post("/aiResponse", async (req, res) => {
   }
 });
 const generateCombinedICS = (events) => {
-  console.log("Making ICS", events);
-
   const formatDate = (date) => {
     return date.toISOString().replace(/[-:]/g, "").split(".")[0];
   };
@@ -71,7 +69,6 @@ app.post("/send-events", async (req, res) => {
   console.log("The email is", recipientEmail);
 
   try {
-    console.log("Start", events);
     // Generate the ICS content
     const icsContent = generateCombinedICS(events);
 
