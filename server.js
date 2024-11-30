@@ -68,6 +68,8 @@ app.post("/send-events", async (req, res) => {
 
   const { events, recipientEmail } = req.body;
 
+  console.log("The email is", recipientEmail);
+
   try {
     console.log("Start", events);
     // Generate the ICS content
