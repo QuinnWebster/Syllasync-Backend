@@ -30,7 +30,7 @@ async function getAiText(pdfText) {
         { role: "user", content: pdfText },
       ],
       response_format: zodResponseFormat(calendarArray, "calendarArray"),
-      max_tokens: 2000,
+      max_tokens: 5000,
     });
 
     const aiText = completion.choices[0].message.content; // Get the generated AI text
