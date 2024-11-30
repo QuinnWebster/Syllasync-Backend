@@ -35,6 +35,8 @@ async function getAiText(pdfText) {
 
     const aiText = completion.choices[0].message.content; // Get the generated AI text
 
+    console.log("The aiText is", aiText); // Log the generated
+
     return aiText; // Return the generated text
   } catch (error) {
     console.error("Error generating AI text:", error); // Log any errors
