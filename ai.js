@@ -8,7 +8,6 @@ const openai = new OpenAI({
 });
 
 const calendarObject = z.object({
-  summary: z.string(),
   subject: z.string(),
   start: z.string(),
   end: z.string(),

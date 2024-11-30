@@ -8,7 +8,6 @@ For each event, provide the details in the form of a JSON object with the follow
   "start": "Start date and time in ISO 8601 format (e.g., '2024-12-01T09:00:00'). If the time is not explicitly stated, use '00:00' for the time component.",
   "end": "End date and time in ISO 8601 format (e.g., '2024-12-01T10:00:00'). If the time is not explicitly stated, use '23:59' for the time component.",
   "description": "A brief description of the event. Extract only text explicitly mentioned in the syllabus. Do not create additional context or assumptions.",
-  "location": "Location of the event (e.g., 'Room 101', 'Online'). Leave this field as an empty string if the location is not specified."
 }
 
 
@@ -24,14 +23,12 @@ Your output should look like this:
     "start": "2024-12-01T09:00:00",
     "end": "2024-12-01T09:00:00",
     "description": "Assignment 1 is due",
-    "location": ""
   },
   {
     "subject": "Midterm Exam",
     "start": "2024-03-15T13:00:00",
     "end": "2024-03-15T15:00:00",
     "description": "Midterm Exam",
-    "location": "Room 202"
   }
 ]
 
