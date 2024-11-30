@@ -11,6 +11,7 @@ For each event, provide the details in the form of a JSON object with the follow
   "location": "Location of the event (e.g., 'Room 101', 'Online'). Leave this field as an empty string if the location is not specified."
 }
 
+
 ### Example Output
 If the syllabus mentions:
 - "Assignment 1 is due on December 1, 2024, at 9:00 AM"
@@ -49,7 +50,8 @@ Your output should look like this:
    - Projects
    - Important deadlines or other relevant dates.
 
-Your response should only include the extracted JSON objects and nothing else.
+Your response should only include the list of extracted JSON objects and nothing else.
+Ensure to only include the list of extracted JSON objects and nothing else in your response.
 
 Start processing the syllabus text now.
 `;
