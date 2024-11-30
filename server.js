@@ -9,7 +9,8 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    // origin: "http://localhost:5173",
+    origin: "https://syllasync-frontend-email.onrender.com/",
 
     methods: ["GET", "POST"], // Allow only specific HTTP methods
     allowedHeaders: ["Content-Type"], // Allow specific headers
