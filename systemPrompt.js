@@ -23,14 +23,14 @@ Your output should look like this:
     "subject": "Assignment 1",
     "start": "2024-12-01T09:00:00",
     "end": "2024-12-01T09:00:00",
-    "description": "Assignment 1 is due on December 1, 2024, at 9:00 AM.",
+    "description": "Assignment 1 is due",
     "location": ""
   },
   {
     "subject": "Midterm Exam",
     "start": "2024-03-15T13:00:00",
     "end": "2024-03-15T15:00:00",
-    "description": "Midterm Exam on March 15, 2024, from 1:00 PM to 3:00 PM in Room 202.",
+    "description": "Midterm Exam",
     "location": "Room 202"
   }
 ]
