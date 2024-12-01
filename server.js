@@ -19,7 +19,7 @@ const PORT = 3000;
 app.use(express.json());
 
 app.post("/aiResponse", async (req, res) => {
-  console.log("Getting as response")
+  console.log("Getting as response");
   try {
     const pdfText = req.body.text;
     if (!pdfText) {
@@ -69,7 +69,7 @@ app.post("/send-events", async (req, res) => {
     const msg = {
       to: recipientEmail,
       from: "quinnwebster@uvic.ca",
-      subject: "Your Syllasbus Events - Add to Calendar",
+      subject: "Your Syllabus Events - Add to Calendar",
       text: "We have your syllabus events! Click the attachment to add them all to your calendar.",
       attachments: [
         {
