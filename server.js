@@ -58,7 +58,6 @@ const generateCombinedICS = (events) => {
 };
 
 app.post("/send-events", async (req, res) => {
-  res.status(500).json({ error: "Failed to send events" });
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
   const { events, recipientEmail } = req.body;
