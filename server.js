@@ -19,6 +19,7 @@ const PORT = 3000;
 app.use(express.json());
 
 app.post("/aiResponse", async (req, res) => {
+  console.log("Getting as response")
   try {
     const pdfText = req.body.text;
     if (!pdfText) {
