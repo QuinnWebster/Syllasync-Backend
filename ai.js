@@ -18,9 +18,7 @@ const calendarArray = z.object({
   objects: z.array(calendarObject),
 });
 
-// Function to get AI-generated text based on the system prompt and syllabus
 async function getAiText(pdfText) {
-  console.log("Generating AI text..."); // Log that we're generating AI text
   try {
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",
@@ -32,14 +30,12 @@ async function getAiText(pdfText) {
       max_tokens: 5000,
     });
 
-    const aiText = completion.choices[0].message.content; // Get the generated AI text
+    const aiText = completion.choices[0].message.content;
 
-    console.log("The aiText is", aiText); // Log the generated
-
-    return aiText; // Return the generated text
+    return aiText;
   } catch (error) {
-    console.error("Error generating AI text:", error); // Log any errors
-    throw new Error("Failed to generate AI text."); // Rethrow to handle in controller
+    console.error("Error generating AI text:", error);
+    throw new Error("Failed to generate AI text.");
   }
 }
 
