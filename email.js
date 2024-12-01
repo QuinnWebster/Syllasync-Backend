@@ -27,6 +27,8 @@ const generateCombinedICS = (events) => {
 };
 
 async function sendEvents(events, recipientEmail) {
+  console.log("events", events);
+  console.log("recipientEmail", recipientEmail);
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
   try {
